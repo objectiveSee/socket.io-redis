@@ -222,6 +222,14 @@ function adapter(uri, opts){
     });
   };
 
+  Redis.prototype.channelName = function(room){
+    var channelName = this.prefix + '#' + this.nsp.name + '#';
+    if ( room ) {
+      channelName +=  room + '#';
+    }
+    return channelName;
+  };
+
   Redis.uid = uid;
   Redis.pubClient = pub;
   Redis.subClient = sub;
